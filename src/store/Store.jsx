@@ -1,4 +1,3 @@
-import { CallToActionOutlined } from '@material-ui/icons';
 import React, { createContext, useReducer } from 'react';
 import {
   ON_ENVIAR_MENSAGEM_ERROR,
@@ -11,22 +10,7 @@ import {
 } from './types';
 
 const initialState = {
-  mensagens: [
-    {
-      id: 'b',
-      txtOriginal: 'Test: Mensagem 1 (txtOriginal)',
-      txtCrypto: 'Mensagem 1 (txtCrypto)',
-      txtBin: 'Mensagem 1 (txtBin)',
-      txtCoded: 'Mensagem 1 (txtCoded)',
-    },
-    {
-      id: 'a',
-      txtOriginal: 'Test: Mensagem 2 (txtOriginal)',
-      txtCrypto: 'Mensagem 2 (txtCrypto)',
-      txtBin: 'Mensagem 2 (txtBin)',
-      txtCoded: 'Mensagem 2 (txtCoded)',
-    },
-  ],
+  mensagens: [],
   mensagensPendentes: [],
   servidor: null,
   cliente: null,

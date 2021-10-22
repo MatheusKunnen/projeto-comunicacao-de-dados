@@ -17,10 +17,16 @@ const MensagemInput = ({ ...props }) => {
   const handleSendClick = () => {
     if (mensagem.length <= 0) return;
     enviarMensagem(mensagem);
+    setMensagem('');
   };
 
   return (
-    <Box display="flex" paddingLeft="1rem" {...props}>
+    <Box
+      display="flex"
+      padding="1rem"
+      style={{ background: '#FFF' }}
+      {...props}
+    >
       <Input
         value={mensagem}
         onChange={handleInputChange}

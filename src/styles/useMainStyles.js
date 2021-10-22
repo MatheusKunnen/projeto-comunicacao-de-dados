@@ -20,7 +20,7 @@ const useMainStyles = makeStyles((theme) => ({
   clientePageRoot: {
     width: '100vw',
     height: '100vh',
-    background: '#FFF',
+    background: theme.palette.primary.main,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -30,6 +30,7 @@ const useMainStyles = makeStyles((theme) => ({
     fontSize: '2rem',
     textTransform: 'uppercase',
     color: theme.palette.primary.main,
+    background: '#FFF',
   },
   homePageBtnImg: {
     fontSize: '5rem',

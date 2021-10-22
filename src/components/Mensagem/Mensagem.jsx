@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Box, Typography } from '@material-ui/core';
-
+import { Box, Typography, Button } from '@material-ui/core';
+import { Info, ArrowDownward, ChevronRight } from '@material-ui/icons';
 const Mensagem = ({
   id,
   txtOriginal,
@@ -10,24 +10,47 @@ const Mensagem = ({
   txtCoded,
   ...props
 }) => {
-  const items = [id, txtOriginal, txtCrypto, txtBin, txtCoded];
+  const [show, setShow] = useState(false);
+  let items = [txtOriginal];
+  if (show) items = [...items, txtCrypto, txtBin, txtCoded];
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      padding="0.5rem"
-      margin="0.5rem"
-      style={{ background: '#EEE' }}
-      {...props}
-    >
-      {items.map((item, i) => (
-        <Typography
-          key={`${id}-${i}`}
-          style={{ width: '100%', textOverflow: 'wrap' }}
+    <Box width="100%">
+      <Box
+        display="flex"
+        flexDirection="row"
+        margin="0.5rem"
+        style={{
+          background: '#FFF',
+          justifyContent: 'space-between',
+        }}
+        boxShadow="2"
+        borderRadius={4}
+        {...props}
+      >
+        <Box
+          display="flex"
+          flexDirection="column"
+          padding="0.5rem"
+          maxWidth="80%"
         >
-          {String(item)}
-        </Typography>
-      ))}
+          {items.map((item, i) => (
+            <Typography key={`${id}-${i}`} style={{ wordWrap: 'break-word' }}>
+              {String(item)}
+            </Typography>
+          ))}
+          <Typography style={{ fontSize: '0.75rem', color: '#333' }}>
+            {id}
+          </Typography>
+        </Box>
+        <Box display="flex">
+          <Button onClick={() => setShow(!show)}>
+            {!show ? <ChevronRight /> : <ArrowDownward />}
+          </Button>
+          <Button>
+            <Info />
+          </Button>
+        </Box>
+      </Box>
     </Box>
   );
 };
