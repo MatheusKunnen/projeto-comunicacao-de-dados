@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useMainStyles = makeStyles((theme) => ({
   homePageRoot: {
-    width: '100%',
+    width: '100vw',
     height: '100vh',
     background: '#FFF',
     display: 'flex',
@@ -10,7 +10,7 @@ const useMainStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   servidorPageRoot: {
-    width: '100%',
+    width: '10vw',
     height: '100vh',
     background: '#FFF',
     display: 'flex',
@@ -18,7 +18,7 @@ const useMainStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   clientePageRoot: {
-    width: '100%',
+    width: '100vw',
     height: '100vh',
     background: '#FFF',
     display: 'flex',

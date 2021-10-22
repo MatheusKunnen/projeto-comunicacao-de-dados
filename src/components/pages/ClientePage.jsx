@@ -19,7 +19,7 @@ const ClientePage = () => {
         <Divider />
       </Box>
       <Cliente />
-      <Button component={Link} to="/" color="danger">
+      <Button component={Link} to="/" color="secondary">
         Voltar
       </Button>
     </Box>
