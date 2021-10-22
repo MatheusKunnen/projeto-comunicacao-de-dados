@@ -1,24 +1,20 @@
-
-
 /*
   @Desc: Módulo encarregado de encriptar e desencriptar os strings
   @Parâmetros:
     - config: segredos/informação para encriptar/desencriptar (falta definir algoritmo)
 */
-const Encriptador = (config) => {
 
-  const encode = (msg) => {
-    return msg;
-  }
+const encrypt = (config, msg) => {
+  return msg;
+};
 
-  const decode = (msg) => {
-    return msg;
-  }
+const decrypt = (config, msg) => {
+  return msg;
+};
 
-  return {
-    encode, 
-    decode
-  }
-}
+const Encriptador = {
+  encrypt,
+  decrypt,
+};
 
 export default Encriptador;
