@@ -8,7 +8,13 @@ const Mensagens = () => {
   const { mensagens } = state;
 
   return (
-    <Box display="block" height="100%" width="100%" overflow="scroll">
+    <Box
+      display="block"
+      height="100%"
+      width="100%"
+      overflow="scroll"
+      className="no-scroll"
+    >
       {mensagens.map((mensagem, i) => (
         <Mensagem key={i} {...mensagem} />
       ))}

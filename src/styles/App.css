@@ -4,3 +4,29 @@ body {
   height: auto;
   width: auto;
 }
+
+/* width */
+.custom-h-scroll-bar::-webkit-scrollbar {
+  width: 0px;
+  height: 4px;
+}
+
+/* Track */
+.custom-h-scroll-bar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.custom-h-scroll-bar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10%;
+}
+
+/* Handle on hover */
+.custom-h-scroll-bar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}

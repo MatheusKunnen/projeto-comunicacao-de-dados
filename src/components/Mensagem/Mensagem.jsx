@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 
 import { Box, Typography, Button } from '@material-ui/core';
 import { Info, ArrowDownward, ChevronRight } from '@material-ui/icons';
+import MensagemSignal from './MensagemSignal';
 const Mensagem = ({
   id,
   txtOriginal,
   txtCrypto,
   txtBin,
   txtCoded,
+  dataSinal,
   ...props
 }) => {
   const [show, setShow] = useState(false);
   let items = [txtOriginal];
-  if (show) items = [...items, txtCrypto, txtBin, txtCoded];
+  if (show) items = [...items, txtCrypto /*txtBin, txtCoded*/];
   return (
     <Box width="100%">
       <Box
@@ -31,13 +33,19 @@ const Mensagem = ({
           display="flex"
           flexDirection="column"
           padding="0.5rem"
-          maxWidth="80%"
+          maxWidth="90%"
         >
           {items.map((item, i) => (
             <Typography key={`${id}-${i}`} style={{ wordWrap: 'break-word' }}>
               {String(item)}
             </Typography>
           ))}
+          <MensagemSignal
+            data={dataSinal}
+            chartHeight={show ? 100 : 25}
+            chartLengthMultiplier={show ? 14 : 7}
+            className={show ? 'custom-h-scroll-bar' : 'no-scroll'}
+          />
           <Typography style={{ fontSize: '0.75rem', color: '#333' }}>
             {id}
           </Typography>
@@ -46,9 +54,9 @@ const Mensagem = ({
           <Button onClick={() => setShow(!show)}>
             {!show ? <ChevronRight /> : <ArrowDownward />}
           </Button>
-          <Button>
+          {/* <Button>
             <Info />
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Box>

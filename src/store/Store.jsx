@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   mensagens: [],
-  mensagensPendentes: [],
+  error: null,
   servidor: null,
   cliente: null,
   commConfig: {
@@ -28,15 +28,12 @@ const reducer = (state, action) => {
     case ON_ENVIAR_MENSAGEM_ERROR:
       return {
         ...state,
-        // mensagensPendentes: [...state.mensagensPendentes, action.payload],
-        // mensagens: [action.payload, ...state.mensagens],
+        error: action.payload,
       };
     case ON_LIMPAR_MENSAGEM_ERROR:
       return {
         ...state,
-        // mensagensPendentes: state.mensagens.filter(
-        //   (msg) => msg.id === action.payload
-        // ),
+        error: null,
       };
     case ON_ADICIONAR_MENSAGEM_RECEBIDA:
       return {

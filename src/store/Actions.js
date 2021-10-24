@@ -54,6 +54,15 @@ export const adicionarMensagemRecebidaAction =
     const bin = Codificador.string2bin(decrypted);
     // Calcula hash da mensagem para identificar
     const id = crypto.createHash('md5').update(msgCodificada).digest('hex');
+    const dataBin = bin.split('');
+    let idx = 0;
+    const dataSinal = msgCodificada
+      .replace(/\D/g, '')
+      .split('')
+      .map((d, i) => {
+        if (i > 0 && i % 2 === 0 && idx + 1 < dataBin.length) idx += 1;
+        return { coded: d, bin: dataBin[idx] };
+      });
     // Adiciona a mensagem a lista de mensagens recebidas
     dispatch({
       type: ON_ADICIONAR_MENSAGEM_RECEBIDA,
@@ -63,6 +72,7 @@ export const adicionarMensagemRecebidaAction =
         txtCrypto: decoded,
         txtBin: bin,
         txtCoded: msgCodificada,
+        dataSinal,
       },
     });
   };
