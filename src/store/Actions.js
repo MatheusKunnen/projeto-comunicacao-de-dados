@@ -51,7 +51,7 @@ export const adicionarMensagemRecebidaAction =
     // Desencripta a mensagem
     const decrypted = Encriptador.encrypt(state.encriptadorConfig, decoded);
     // Calcula o eequivalente em binario da mensagem
-    const bin = Codificador.string2bin(decrypted);
+    const bin = Codificador.string2bin(decoded);
     // Calcula hash da mensagem para identificar
     const id = crypto.createHash('md5').update(msgCodificada).digest('hex');
     const dataBin = bin.split('');
