@@ -53,7 +53,10 @@ export const adicionarMensagemRecebidaAction =
     // Calcula o eequivalente em binario da mensagem
     const bin = Codificador.string2bin(decoded);
     // Calcula hash da mensagem para identificar
-    const id = crypto.createHash('md5').update(msgCodificada).digest('hex');
+    const id = crypto
+      .createHash('md5')
+      .update(msgCodificada + Date.now())
+      .digest('hex');
     const dataBin = bin.split('');
     let idx = 0;
     const dataSinal = msgCodificada
@@ -61,7 +64,7 @@ export const adicionarMensagemRecebidaAction =
       .split('')
       .map((d, i) => {
         if (i > 0 && i % 2 === 0 && idx + 1 < dataBin.length) idx += 1;
-        return { coded: d, bin: dataBin[idx] };
+        return { coded: d, bin: dataBin[idx], clock: i % 2 };
       });
     // Adiciona a mensagem a lista de mensagens recebidas
     dispatch({

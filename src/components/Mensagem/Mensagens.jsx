@@ -16,7 +16,7 @@ const Mensagens = () => {
       className="no-scroll"
     >
       {mensagens.map((mensagem, i) => (
-        <Mensagem key={i} {...mensagem} />
+        <Mensagem key={mensagem.id} {...mensagem} />
       ))}
     </Box>
   );

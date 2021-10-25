@@ -42,9 +42,11 @@ const Mensagem = ({
           ))}
           <MensagemSignal
             data={dataSinal}
-            chartHeight={show ? 100 : 25}
+            chartHeight={show ? 50 : 25}
             chartLengthMultiplier={show ? 14 : 7}
             className={show ? 'custom-h-scroll-bar' : 'no-scroll'}
+            showBin={show}
+            showClock={show}
           />
           <Typography style={{ fontSize: '0.75rem', color: '#333' }}>
             {id}
