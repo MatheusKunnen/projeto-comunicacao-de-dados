@@ -7,13 +7,19 @@ import {
   ON_CONECTAR_CLIENTE,
   ON_FECHAR_CLIENTE,
   ON_ADICIONAR_MENSAGEM_RECEBIDA,
+  ON_UPDATE_COMM_CONFIG,
+  ON_UPDATE_CRYPTO_CONFIG,
+  ON_CLIENTE_STATUS_CHANGE,
+  ON_SERVIDOR_STATUS_CHANGE,
 } from './types';
 
 const initialState = {
   mensagens: [],
   error: null,
   servidor: null,
+  servidorStatus: false,
   cliente: null,
+  clienteStatus: false,
   commConfig: {
     host: 'localhost',
     porta: 5150,
@@ -48,6 +54,14 @@ const reducer = (state, action) => {
       return { ...state, cliente: action.payload };
     case ON_FECHAR_CLIENTE:
       return { ...state, cliente: null };
+    case ON_UPDATE_CRYPTO_CONFIG:
+      return { ...state, encriptadorConfig: action.payload };
+    case ON_UPDATE_COMM_CONFIG:
+      return { ...state, commConfig: action.payload };
+    case ON_CLIENTE_STATUS_CHANGE:
+      return { ...state, clienteStatus: action.payload };
+    case ON_SERVIDOR_STATUS_CHANGE:
+      return { ...state, servidorStatus: action.payload };
     default:
       return state;
   }
