@@ -10,9 +10,9 @@ const useMainStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   servidorPageRoot: {
-    width: '10vw',
+    width: '100vw',
     height: '100vh',
-    background: '#FFF',
+    background: theme.palette.primary.main,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

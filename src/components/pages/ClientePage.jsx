@@ -2,26 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Box, Button, Typography, Divider } from '@material-ui/core';
-import { ContactPhone } from '@material-ui/icons';
+import { ArrowBack, ContactPhone } from '@material-ui/icons';
 
 import Cliente from '../Cliente';
 
 import useMainStyles from '../../styles/useMainStyles';
+import ClienteStatus from '../Cliente/ClienteStatus';
 
 const ClientePage = () => {
   const classes = useMainStyles();
   return (
     <Box className={classes.clientePageRoot}>
-      <Box>
+      <Box
+        display="flex"
+        justifyContent="stretch"
+        style={{ background: '#FFF' }}
+      >
+        <Button component={Link} to="/" color="primary">
+          <ArrowBack />
+        </Button>
         <Typography className={classes.pageTitle}>
           <ContactPhone /> Cliente
         </Typography>
         <Divider />
       </Box>
       <Cliente />
-      <Button component={Link} to="/" color="secondary">
-        Voltar
-      </Button>
+
+      <ClienteStatus />
     </Box>
   );
 };

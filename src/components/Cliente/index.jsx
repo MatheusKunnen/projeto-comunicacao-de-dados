@@ -3,9 +3,8 @@ import { Store } from '../../store/Store';
 import {
   iniciarClienteAction,
   iniciarServidorAction,
-  fecharClienteAction,
-  fecharServidorAction,
   adicionarMensagemRecebidaAction,
+  updateClienteStatusAction,
 } from '../../store/Actions';
 
 import Mensagens from '../Mensagem/Mensagens';
@@ -13,27 +12,28 @@ import MensagemInput from '../Mensagem/MensagemInput';
 
 const Cliente = () => {
   const { state, dispatch } = useContext(Store);
+
   const iniciarCliente = iniciarClienteAction(state, dispatch);
   const iniciarServidor = iniciarServidorAction(state, dispatch);
-  const fecharCliente = fecharClienteAction(state, dispatch);
-  const fecharServidor = fecharServidorAction(state, dispatch);
+  const updateClienteStatus = updateClienteStatusAction(state, dispatch);
+
   const adicionarMensagemRecebida = adicionarMensagemRecebidaAction(
     state,
     dispatch
   );
   const servidorCallback = (data) => {
-    adicionarMensagemRecebida(data.toString('utf-8'));
+    // adicionarMensagemRecebida(data.toString('utf-8'));
   };
   const clienteCallback = (data) => {
     adicionarMensagemRecebida(data.toString('utf-8'));
   };
 
   useEffect(() => {
-    iniciarServidor(servidorCallback);
-    iniciarCliente(clienteCallback);
+    const servidor = iniciarServidor(servidorCallback);
+    const cliente = iniciarCliente(clienteCallback, updateClienteStatus);
     return () => {
-      fecharServidor();
-      fecharCliente();
+      servidor.close();
+      cliente.close();
     };
     // eslint-disable-next-line
   }, []);

@@ -24,12 +24,16 @@ const MensagemInput = ({ ...props }) => {
     <Box
       display="flex"
       padding="1rem"
+      boxShadow={1}
       style={{ background: '#FFF' }}
       {...props}
     >
       <Input
         value={mensagem}
         onChange={handleInputChange}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') handleSendClick();
+        }}
         placeholder="Escreva sua mensagem..."
         style={{ flexGrow: '2' }}
       />

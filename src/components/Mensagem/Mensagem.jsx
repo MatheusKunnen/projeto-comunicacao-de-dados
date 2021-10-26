@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Box, Typography, Button } from '@material-ui/core';
-import { Info, ArrowDownward, ChevronRight } from '@material-ui/icons';
+import { ArrowDownward, ChevronRight } from '@material-ui/icons';
 import MensagemSignal from './MensagemSignal';
 const Mensagem = ({
   id,
@@ -14,7 +14,7 @@ const Mensagem = ({
 }) => {
   const [show, setShow] = useState(false);
   let items = [txtOriginal];
-  if (show) items = [...items, txtCrypto /*txtBin, txtCoded*/];
+  if (show) items = [...items, txtCrypto];
   return (
     <Box width="100%">
       <Box
@@ -22,7 +22,7 @@ const Mensagem = ({
         flexDirection="row"
         margin="0.5rem"
         style={{
-          background: '#FFF',
+          background: '#FEFEFE',
           justifyContent: 'space-between',
         }}
         boxShadow="2"
@@ -33,7 +33,7 @@ const Mensagem = ({
           display="flex"
           flexDirection="column"
           padding="0.5rem"
-          maxWidth="90%"
+          maxWidth="80%"
         >
           {items.map((item, i) => (
             <Typography key={`${id}-${i}`} style={{ wordWrap: 'break-word' }}>
@@ -52,14 +52,9 @@ const Mensagem = ({
             {id}
           </Typography>
         </Box>
-        <Box display="flex">
-          <Button onClick={() => setShow(!show)}>
-            {!show ? <ChevronRight /> : <ArrowDownward />}
-          </Button>
-          {/* <Button>
-            <Info />
-          </Button> */}
-        </Box>
+        <Button onClick={() => setShow(!show)}>
+          {!show ? <ChevronRight /> : <ArrowDownward />}
+        </Button>
       </Box>
     </Box>
   );
