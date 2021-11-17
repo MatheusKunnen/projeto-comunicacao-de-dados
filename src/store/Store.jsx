@@ -24,7 +24,9 @@ const initialState = {
     host: 'localhost',
     porta: 5150,
   },
-  encriptadorConfig: {},
+  encriptadorConfig: {
+    cString: 'ABC ACB 123 QWERTYASDFGZXCVBNMKL',
+  },
 };
 
 export const Store = createContext(initialState);

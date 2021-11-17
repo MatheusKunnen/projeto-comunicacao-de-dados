@@ -14,7 +14,12 @@ const Mensagem = ({
 }) => {
   const [show, setShow] = useState(false);
   let items = [txtOriginal];
-  if (show) items = [...items, txtCrypto];
+  let smallItems = [];
+  if (show) {
+    items = [...items, txtCrypto];
+    smallItems = [txtBin, txtCoded];
+  }
+
   return (
     <Box width="100%">
       <Box
@@ -40,6 +45,7 @@ const Mensagem = ({
               {String(item)}
             </Typography>
           ))}
+
           <MensagemSignal
             data={dataSinal}
             chartHeight={show ? 50 : 25}
@@ -48,9 +54,24 @@ const Mensagem = ({
             showBin={show}
             showClock={show}
           />
-          <Typography style={{ fontSize: '0.75rem', color: '#333' }}>
+          {smallItems.map((item, i) => (
+            <Typography
+              key={`sm-${id}-${i}`}
+              style={{
+                wordWrap: 'break-word',
+                fontSize: '0.75rem',
+                marginTop: '0.25rem',
+                borderRadius: '0.25rem',
+                background: '#FEFEFE',
+                color: '#333',
+              }}
+            >
+              {String(item)}
+            </Typography>
+          ))}
+          {/* <Typography style={{ fontSize: '0.75rem', color: '#333' }}>
             {id}
-          </Typography>
+          </Typography> */}
         </Box>
         <Button onClick={() => setShow(!show)}>
           {!show ? <ChevronRight /> : <ArrowDownward />}

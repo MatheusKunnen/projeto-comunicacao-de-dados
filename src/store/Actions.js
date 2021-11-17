@@ -18,7 +18,10 @@ import {
 
 export const enviarMensagemAction = (state, dispatch) => (mensagem) => {
   // Encripta mensagem
-  const encrypted = Encriptador.encrypt(state.encriptadorConfig, mensagem);
+  const encrypted = Encriptador.encrypt(
+    state.encriptadorConfig.cString,
+    mensagem
+  );
   // Converte caracteres em binario (UNICAMENTE para DEBUG)
   // const bin = Codificador.string2bin(encrypted);
   // Codifica utilizando o algoritmo de codigo de linha
@@ -52,7 +55,10 @@ export const adicionarMensagemRecebidaAction =
     // Decodifica a mensagem utilizando o algoritmo de codigo de linha
     const decoded = Codificador.decoder(msgCodificada);
     // Desencripta a mensagem
-    const decrypted = Encriptador.encrypt(state.encriptadorConfig, decoded);
+    const decrypted = Encriptador.decrypt(
+      state.encriptadorConfig.cString,
+      decoded
+    );
     // Calcula o eequivalente em binario da mensagem
     const bin = Codificador.string2bin(decoded);
     // Calcula hash da mensagem para identificar

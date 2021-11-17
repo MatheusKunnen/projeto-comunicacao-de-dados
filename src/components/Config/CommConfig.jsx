@@ -30,6 +30,7 @@ const CommConfig = ({ readOnly, ...props }) => {
         }}
         value={commConfig?.host}
         onChange={handleInputUpdate}
+        style={{ minWidth: '20rem' }}
       />
       <TextField
         name="porta"
@@ -41,7 +42,7 @@ const CommConfig = ({ readOnly, ...props }) => {
         }}
         value={commConfig?.porta}
         onChange={handleInputUpdate}
-        style={{ width: '5rem' }}
+        style={{ minWidth: '5rem' }}
       />
     </Box>
   );

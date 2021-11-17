@@ -7,6 +7,8 @@ import { Storage, ContactPhone } from '@material-ui/icons';
 import useMainStyles from '../../styles/useMainStyles';
 import { Link } from 'react-router-dom';
 import CommConfig from '../Config/CommConfig';
+import AuthConfig from '../Config/AuthConfig';
+import Encriptador from '../../comm/Encriptador';
 
 const HomePage = () => {
   const classes = useMainStyles();
@@ -14,7 +16,8 @@ const HomePage = () => {
   const disabled =
     state.commConfig.host.length <= 0 ||
     isNaN(state.commConfig.porta) ||
-    state.commConfig.porta > 65535;
+    state.commConfig.porta > 65535 ||
+    !Encriptador.validateConfigString(state.encriptadorConfig.cString);
   return (
     <Box className={classes.homePageRoot}>
       <Typography className={classes.pageTitle}>Grupo Socket</Typography>
@@ -34,7 +37,10 @@ const HomePage = () => {
         label="Iniciar Cliente"
       />
       <Divider />
-      <CommConfig />
+      <Box display="flex" justifyContent="space-between">
+        <CommConfig />
+        <AuthConfig />
+      </Box>
     </Box>
   );
 };
