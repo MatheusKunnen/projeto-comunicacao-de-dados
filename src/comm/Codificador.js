@@ -16,7 +16,7 @@ function encoder(mensagem) {
   for (let i = 0; i < mensagem.length; i++) {
     codigo_asc[i] = mensagem[i].charCodeAt(); //converte a mensagem para decimal
     codigo_binario[i] = codigo_asc[i].toString(2); //convertendo o código decimal para binário
-    while (codigo_binario[i].length < 9) {
+    while (codigo_binario[i].length < 8) {
       //ajuste para todos os números terem a mesma quantidade de casas numéricas
       codigo_binario[i] = '0' + codigo_binario[i];
     }
@@ -98,9 +98,9 @@ function decoder(mensagem_codificada) {
   let aux_asc_binario = '';
   let i = 0;
 
-  //separando a string de 9 em 9 algarismos(que representam cada letra)
-  for (let j = 0; j < decode.length; j = j + 9) {
-    for (let k = 0; k < 9; k++) {
+  //separando a string de 8 em 8 algarismos(que representam cada letra)
+  for (let j = 0; j < decode.length; j = j + 8) {
+    for (let k = 0; k < 8; k++) {
       aux_asc_binario += decode[j + k];
     }
 
@@ -129,7 +129,7 @@ const string2bin = (txt) => {
   for (let i = 0; i < txt.length; i++) {
     codigo_asc[i] = txt[i].charCodeAt(); //converte a txt para decimal
     codigo_binario[i] = codigo_asc[i].toString(2); //convertendo o código decimal para binário
-    while (codigo_binario[i].length < 9) {
+    while (codigo_binario[i].length < 8) {
       //ajuste para todos os números terem a mesma quantidade de casas numéricas
       codigo_binario[i] = '0' + codigo_binario[i];
     }
